@@ -1,5 +1,7 @@
 package br.com.beer.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,15 +14,21 @@ import lombok.RequiredArgsConstructor;
 @NoArgsConstructor
 @RequiredArgsConstructor
 @Builder
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Cerveja {
 
     @NonNull
     private int id;
 
     private String name;
+
     @NonNull
     private String tagline;
+
     @NonNull
     private String description;
+
+    @NonNull
+    private Boolean favorite = false;
 
 }

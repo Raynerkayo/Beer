@@ -3,6 +3,7 @@ package br.com.beer.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -53,17 +54,20 @@ public class CervejaAdapter extends RecyclerView.Adapter<CervejaAdapter.CervejaV
 
         TextView textName;
         TextView textDescricao;
+        ImageView imageFavorite;
 
         //aqui ele vai receber a view, vinda do adapater.
         public CervejaViewHolder(@NonNull View itemView) {
             super(itemView);
             textName = itemView.findViewById(R.id.txt_cerveja);
             textDescricao = itemView.findViewById(R.id.txt_descricao);
+            imageFavorite = itemView.findViewById(R.id.icon_favorite);
         }
 
         public void bind(Cerveja cerveja) {
             textName.setText(cerveja.getName());
             textDescricao.setText(cerveja.getDescription());
+            imageFavorite.setImageResource(cerveja.getFavorite() ? R.drawable.staron : R.drawable.staroff);
         }
     }
 
