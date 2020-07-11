@@ -1,16 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="24dp"
-    >
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginBottom="24dp">
 
-    <TextView
-        android:text="Cerveja 01"
-        android:background="@android:color/holo_blue_dark"
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        ></TextView>
-</LinearLayout>
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="4dp">
+
+        <ImageView
+            android:id="@+id/icon_placeholder"
+            android:layout_width="69dp"
+            android:layout_height="73dp"
+            android:gravity="center"
+            android:src="@drawable/placeholder"
+            android:textColor="@android:color/white"
+            android:textSize="24sp" />
+
+
+        <!--
+        android:layout_alignTop serve para
+        alinahr a algum outro componente.
+        -->
+
+        <TextView
+            android:id="@+id/txt_cerveja"
+            android:layout_width="233dp"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/icon_placeholder"
+            android:layout_marginStart="14dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="18dp"
+            android:layout_toEndOf="@+id/icon_placeholder"
+            android:layout_toRightOf="@+id/icon_placeholder"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="14sp"
+            tools:text="AB: 01" />
+
+        <TextView
+            android:id="@+id/txt_descricao"
+            android:layout_width="236dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_cerveja"
+            android:layout_alignTop="@+id/icon_placeholder"
+            android:layout_marginStart="14dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="29dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="16dp"
+            android:layout_toStartOf="@+id/icon_favoritar"
+            android:layout_toLeftOf="@+id/icon_favoritar"
+            android:layout_toEndOf="@+id/icon_placeholder"
+            android:layout_toRightOf="@+id/icon_placeholder"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="12dp"
+            tools:text="Vanilla Bean Infused Belgian Quad." />
+
+        <ImageView
+            android:id="@+id/icon_favoritar"
+            android:layout_width="40dp"
+            android:layout_height="54dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="7dp"
+            android:layout_marginRight="7dp"
+            android:contentDescription="TODO"
+            android:src="@drawable/staron" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
