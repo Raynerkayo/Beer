@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "678066707422",
+    "firebase_url": "https://beer-428d5.firebaseio.com",
+    "project_id": "beer-428d5",
+    "storage_bucket": "beer-428d5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:678066707422:android:c556be0f52588528545b4f",
+        "android_client_info": {
+          "package_name": "br.com.beer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "678066707422-5d8rlbg28r19fmnvi598m374b28htd51.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.beer",
+            "certificate_hash": "112b1cdaadc73b448241db68eb5ce30163ea4273"
+          }
+        },
+        {
+          "client_id": "678066707422-8a2trgf9fcovcer2ahpa437bcsfi5ffh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGa0LWi7plVVYB3XMy0jdd1Qdx3JxUd3c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "678066707422-8a2trgf9fcovcer2ahpa437bcsfi5ffh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -2,6 +2,9 @@ package br.com.beer.model;
 
 import android.media.Image;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -10,12 +13,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @RequiredArgsConstructor
 @Builder
+@ToString(exclude = {"id"})
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Cerveja {
 

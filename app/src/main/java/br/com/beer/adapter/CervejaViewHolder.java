@@ -4,7 +4,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -18,6 +17,7 @@ public class CervejaViewHolder extends RecyclerView.ViewHolder {
     TextView textDescricao;
     ImageView imageFavorite;
     ImageView imageBeer;
+
 
     //aqui ele vai receber a view, vinda do adapater.
     public CervejaViewHolder(View itemView) {

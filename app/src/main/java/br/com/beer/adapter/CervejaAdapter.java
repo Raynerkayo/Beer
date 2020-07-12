@@ -11,14 +11,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.beer.R;
+import br.com.beer.database.CervejaDatabase;
 import br.com.beer.model.Cerveja;
 
 public class CervejaAdapter extends RecyclerView.Adapter<CervejaViewHolder> {
 
     private final List<Cerveja> cervejas;
+    private final CervejaDatabase db;
 
     public CervejaAdapter(List<Cerveja> cervejas) {
         this.cervejas = cervejas;
+        db = new CervejaDatabase();
     }
 
     //serve para carregar a view para o mostrar o usuário.
@@ -42,25 +45,27 @@ public class CervejaAdapter extends RecyclerView.Adapter<CervejaViewHolder> {
                     notifyItemChanged(position);
                     if (cerveja.getFavorite()){
                         cerveja.setFavorite(false);
-                        addFavorite(cerveja, position, false);
+                        addFavorite(cerveja, position);
                         System.out.println("FALSE ***" + cerveja.getFavorite());
                     } else{
                         cerveja.setFavorite(true);
-                        addFavorite(cerveja, position, true);
+                        addFavorite(cerveja, position);
                         System.out.println("TRUE ***" + cerveja.getFavorite());
                     }
                 });
         holder.bind(cerveja);
     }
 
-    private void addFavorite(Cerveja cerveja, int position, boolean isFavorite) {
+    private void addFavorite(Cerveja cerveja, int position) {
         notifyItemChanged(position);
 
         List<Cerveja> cervejasFavoritas = new ArrayList<>();
         if(!cervejasFavoritas.contains(cerveja) && cerveja.getFavorite()){
             cervejasFavoritas.add(cerveja);
+            db.salvar(cerveja);
         } else {
             cervejasFavoritas.remove(cerveja);
+            db.salvar(cerveja);
         }
 
         System.out.println("ADICIONADA AOS FAVORITOS ***" + cerveja.getName());
