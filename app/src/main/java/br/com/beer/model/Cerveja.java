@@ -1,5 +1,7 @@
 package br.com.beer.model;
 
+import android.media.Image;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -30,5 +32,8 @@ public class Cerveja {
 
     @NonNull
     private Boolean favorite = false;
+
+    @NonNull
+    private String image_url;
 
 }
