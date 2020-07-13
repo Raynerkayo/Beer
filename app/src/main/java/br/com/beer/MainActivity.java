@@ -6,19 +6,27 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 import br.com.beer.activity.DetalhesActivity;
 import br.com.beer.adapter.CervejaAdapter;
+import br.com.beer.adapter.CervejasFavoritasAdapter;
 import br.com.beer.config.RetrofitConfig;
+import br.com.beer.dao.CervejasDAO;
+import br.com.beer.database.CervejaDatabaseROOM;
 import br.com.beer.model.Cerveja;
 import br.com.beer.util.RecyclerItemClickListener;
 import retrofit2.Call;
@@ -29,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
 
     private CervejaAdapter cervejaAdapter;
 
+    private CervejasFavoritasAdapter cfa;
+
     RecyclerView recyclerView;
 
     @Override
@@ -37,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
 
         if(isConnected()){
             setContentView(R.layout.activity_main);
+            Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(myToolbar);
+
             requisitarDadosApi();
         } else {
             ImageView imageRefresh;
@@ -53,6 +66,43 @@ public class MainActivity extends AppCompatActivity {
             );
 
         }
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_bar, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.buscar:
+
+                return true;
+
+            case R.id.favoritos:
+
+                CervejasDAO dao = CervejaDatabaseROOM.getInstance(getApplicationContext()).createCervejaDAO();
+                System.out.println("AQUI" + dao.getAll().get(1));
+                cfa = new CervejasFavoritasAdapter(dao);
+                RecyclerView recyclerView = findViewById(R.id.recycler_view_main);
+                recyclerView.setAdapter(cfa);
+                return true;
+
+            default:
+
+                return super.onOptionsItemSelected(item);
+
+        }
+
+    }
+
+    private void getFavoritos(Context applicationContext) {
 
     }
 
@@ -74,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
                                 new RecyclerItemClickListener.OnItemClickListener() {
                                     @Override
                                     public void onItemClick(View view, int position) {
-                                        Toast.makeText(getApplicationContext(), "1 clique logo para abrir detalhes. \n2 cliques na estrela para favoritar.", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(getApplicationContext(), "1 clique longo para abrir detalhes. \n2 cliques na estrela para favoritar.", Toast.LENGTH_LONG).show();
                                     }
 
                                     @Override
