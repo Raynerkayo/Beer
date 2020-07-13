@@ -14,16 +14,16 @@ import br.com.beer.model.Cerveja;
 public class CervejaViewHolder extends RecyclerView.ViewHolder {
 
     TextView textName;
-    TextView textDescricao;
     ImageView imageFavorite;
     ImageView imageBeer;
+    TextView textTagline;
 
 
     //aqui ele vai receber a view, vinda do adapater.
     public CervejaViewHolder(View itemView) {
         super(itemView);
         textName = itemView.findViewById(R.id.txt_cerveja);
-        textDescricao = itemView.findViewById(R.id.txt_descricao);
+        textTagline = itemView.findViewById(R.id.txt_tagline);
         imageFavorite = itemView.findViewById(R.id.icon_favorite);
         imageBeer = itemView.findViewById(R.id.icon_placeholder);
     }
@@ -32,7 +32,8 @@ public class CervejaViewHolder extends RecyclerView.ViewHolder {
     public void bind(Cerveja cerveja) {
 
         textName.setText(cerveja.getName());
-        textDescricao.setText(cerveja.getDescription());
+        textTagline.setText(cerveja.getTagline());
+
         imageFavorite.setImageResource(cerveja.getFavorite() ? R.drawable.staron : R.drawable.staroff);
         Picasso.get().load(cerveja.getImage_url()).into(imageBeer);
     }

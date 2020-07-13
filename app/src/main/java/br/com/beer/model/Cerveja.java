@@ -11,6 +11,8 @@ import androidx.room.PrimaryKey;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,7 +30,7 @@ import lombok.ToString;
 @Builder
 @ToString(exclude = {"id"})
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Cerveja {
+public class Cerveja implements Serializable {
 
     @NonNull
     @PrimaryKey(autoGenerate = true)

@@ -34,12 +34,12 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/app_bar"
+        android:layout_marginTop="0dp"
         android:background="@android:color/white"
-        tools:listitem="@layout/cerveja_item"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        >
+        tools:listitem="@layout/cerveja_item">
 
     </androidx.recyclerview.widget.RecyclerView>
 

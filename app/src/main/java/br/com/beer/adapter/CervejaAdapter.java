@@ -1,7 +1,5 @@
 package br.com.beer.adapter;
 
-import android.annotation.SuppressLint;
-import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +7,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import br.com.beer.R;
@@ -44,40 +41,27 @@ public class CervejaAdapter extends RecyclerView.Adapter<CervejaViewHolder> {
 
         holder.imageFavorite.setOnClickListener(
                 view -> {
-                    System.out.println("DELETANDO CERVEJA FAVORITA");
-                    getFav(view, position, cerveja);
-
+                    System.out.println("CERVEJA FAVORITA ANTES " + cerveja.getFavorite());
+                    favorite(view, position, cerveja);
+                    System.out.println("CERVEJA FAVORITA DEPOIS " + cerveja.getFavorite());
                 }
         );
-/*
-        holder.imageFavorite.setOnClickListener(
-                view -> {
-                    notifyItemChanged(position);
-                    if (cerveja.getFavorite()){
-                        cerveja.setFavorite(false);
-                        addFavorite(cerveja, position);
-                        System.out.println("FALSE ***" + cerveja.getFavorite());
-                    } else{
-                        cerveja.setFavorite(true);
-                        addFavorite(cerveja, position);
-                        System.out.println("TRUE ***" + cerveja.getFavorite());
-                    }
-                });*/
         holder.bind(cerveja);
     }
 
-    private void getFav(View view, int position, Cerveja cerveja) {
-        System.out.println("CERVEJA FAVORITA CHAMANDO MÉTODO");
+    private void favorite(View view, int position, Cerveja cerveja) {
         CervejasDAO dao = CervejaDatabaseROOM.getInstance(view.getContext()).createCervejaDAO();
-        notifyItemChanged(position);
         if(cerveja.getFavorite()){
             if(!dao.getByName(cerveja.getName()).isEmpty()){
-
+                notifyItemChanged(position);
+                cerveja.setFavorite(false);
                 dao.delete(cerveja);
                 System.out.println("CERVEJA FAVORITA DELETADO");
             }
         } else {
+            notifyItemChanged(position);
             dao.insert(cerveja);
+            cerveja.setFavorite(true);
             System.out.println("INSERIR CERVEJA FAVORITA");
         }
 
