@@ -11,7 +11,6 @@ import java.util.List;
 
 import br.com.beer.R;
 import br.com.beer.dao.CervejasDAO;
-import br.com.beer.database.CervejaDatabaseROOM;
 import br.com.beer.model.Cerveja;
 
 public class CervejasFavoritasAdapter extends RecyclerView.Adapter<CervejaViewHolder> {

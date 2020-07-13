@@ -56,13 +56,11 @@ public class CervejaAdapter extends RecyclerView.Adapter<CervejaViewHolder> {
                 notifyItemChanged(position);
                 cerveja.setFavorite(false);
                 dao.delete(cerveja);
-                System.out.println("CERVEJA FAVORITA DELETADO");
             }
         } else {
             notifyItemChanged(position);
             dao.insert(cerveja);
             cerveja.setFavorite(true);
-            System.out.println("INSERIR CERVEJA FAVORITA");
         }
 
     }
